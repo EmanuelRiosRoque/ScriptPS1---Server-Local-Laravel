@@ -1,0 +1,14 @@
+$command = "artisan serve --host=0.0.0.0 --port=8000"
+$directory = "C:\ruta_de_tu_proyecto"
+
+while ($true) {
+    Write-Host "Iniciando Server Laravel..."
+    $process = Start-Process -FilePath "php" -ArgumentList $command -WorkingDirectory $directory -PassThru
+
+    Wait-Process -Id $process.Id
+
+    Write-Host "El servicio se detuvo. Restableciendo en 5 segundos..."
+    Start-Sleep -Seconds 5
+}
+
+Read-Host "Presiona Enter para salir"
